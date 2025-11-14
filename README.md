@@ -1,80 +1,36 @@
-📘 FeiFood – Sistema de Pedidos e Gerenciamento de Alimentos
-Relatório Técnico / README do Projeto
-🧾 1. Apresentação do Projeto
+🛒 FeiFood — Sistema de Pedidos e Catálogo de Alimentos
 
-O FeiFood é um sistema inspirado no funcionamento de plataformas de delivery, desenvolvido em Java utilizando Apache NetBeans, Swing (JFrame Forms), PostgreSQL (pgAdmin4) e arquitetura MVC + DAO.
+Projeto acadêmico desenvolvido como estudante de Ciência da Computação, inspirado em plataformas como iFood.
+O sistema foi construído em Java (Swing) utilizando Apache NetBeans, MVC, DAO, e banco de dados PostgreSQL.
 
-O objetivo do sistema é permitir que usuários realizem cadastro, login, visualização de alimentos disponíveis, além de criar, editar e excluir pedidos, com manipulação de itens em tempo real.
+O objetivo é criar um ambiente simples e funcional onde usuários podem se cadastrar, realizar login, buscar alimentos, visualizar detalhes e registrar pedidos.
 
-Este projeto foi desenvolvido como parte da disciplina de Programação Orientada a Objetos e do laboratório universitário, integrando conceitos de:
+<img width="927" height="681" alt="image" src="https://github.com/user-attachments/assets/6b03ffa9-bcc2-402d-85a0-7f4966ecabb9" />
 
-Modelagem de dados
+📑 1. Objetivo do Projeto
 
-CRUD completo
+O FeiFood é um sistema destinado a estudos de programação orientada a objetos, boas práticas, arquitetura MVC e manipulação de banco de dados.
+O projeto simula um pequeno aplicativo de delivery com foco em:
 
-Interface gráfica
+Aprendizado de conexão com o banco (JDBC)
 
-Banco de dados relacional
+Organização em camadas: Model, View, Controller, DAO
 
-Arquitetura MVC
+CRUD básico de usuários
 
-DAO (Data Access Object)
+Sistema de busca e exibição de dados em JTable
 
-Relacionamentos 1:N e N:N
+Registro de pedidos vinculados ao usuário
 
-Boas práticas de programação
+O sistema foi desenvolvido para fins acadêmicos, servindo como base para estudos futuros sobre UX/UI, estrutura de software e desenvolvimento de backend.
 
-🎯 2. Objetivos do Sistema
+🧱 2. Arquitetura do Sistema
 
-O FeiFood foi projetado para cumprir as seguintes funcionalidades principais:
+O projeto utiliza uma estrutura MVC + DAO, dividida da seguinte forma:
 
-✔ Cadastro de clientes
+✔ Model
 
-Inserir novos usuários
-
-Validar formato de dados
-
-Armazenar em PostgreSQL
-
-✔ Login de clientes
-
-Verificação segura via PreparedStatement
-
-Tela de login integrada com o banco
-
-✔ Visualização e busca de alimentos
-
-Consulta dinâmica no banco
-
-Filtro por nome via LIKE
-
-Exibição dos preços formatados (R$) e porções (g)
-
-✔ Criação de pedidos
-
-Adicionar alimentos ao carrinho
-
-Definir quantidades
-
-Remover alimentos
-
-Exibir totais do pedido
-
-✔ Persistência do pedido
-
-Inserção na tabela tb_pedidos
-
-Inserção dos itens na tabela tb_itempedido
-
-Relacionamento via chave estrangeira
-
-🏛 3. Arquitetura do Sistema
-
-O FeiFood segue a arquitetura MVC (Model — View — Controller), organizada da seguinte forma:
-
-📌 3.1 Model
-
-Conjunto de classes que representam as entidades do sistema:
+Armazena classes responsáveis por representar os dados, como:
 
 User
 
@@ -82,13 +38,12 @@ Alimento
 
 Pedido
 
-ItemPedido
+PedidoItem
 
-Cada model possui atributos, construtores, getters e setters.
+✔ DAO (Data Access Object)
 
-📌 3.2 DAO
-
-Classes responsáveis por comunicação com o banco:
+Responsável pela comunicação com o banco PostgreSQL.
+Cada classe tem seu próprio DAO, por exemplo:
 
 ClienteDAO
 
@@ -96,196 +51,223 @@ AlimentoDAO
 
 PedidoDAO
 
-ItemPedidoDAO
+✔ Controller
 
-Cada DAO utiliza:
-
-PreparedStatement
-
-conexões fornecidas por Conexao.java
-
-retorno com ResultSet quando necessário
-
-todas as consultas são parametrizadas para evitar SQL Injection
-
-📌 3.3 Controller
-
-Camada intermediária entre UI e DAO:
+Controla o fluxo da aplicação e a lógica de negócio:
 
 ControleLogin
 
-ControlePesquisaAlimento
+ControleCadastro
 
 ControlePedido
 
-Responsabilidades:
+✔ View (Swing)
 
-Interpretar ações da interface
+Telas criadas com JFrame Forms:
 
-Validar entradas
+TelaInicial (Login)
 
-Chamar os DAOs correspondentes
-
-Atualizar tabelas e telas
-
-📌 3.4 View
-
-Interface gráfica desenvolvida no NetBeans:
-
-TelaInicial (login)
-
-TelaCadastroCliente
+TelaCadastro
 
 TelaPrincipal
 
 RealizarPedido
 
-GerenciarPedidos
+🔑 3. Funcionalidades Implementadas
 
-A construção utiliza:
+O sistema implementa as seguintes funcionalidades completas:
 
-JFrame
+🧍‍♂️ 3.1 Cadastrar novo usuário
 
-JTable com DefaultTableModel
+O usuário pode criar uma conta fornecendo:
 
-JTextField
+Nome
 
-JButton
+Sobrenome
 
-JScrollPane
+Data de nascimento
 
-JOptionPane
+Email
 
-🗄 4. Estrutura do Banco de Dados
+Senha
 
-Um banco PostgreSQL foi modelado com as seguintes tabelas principais:
+📌 A validação é feita no Controller antes de enviar os dados ao DAO.
 
-4.1 — Tabela tb_cliente
-Coluna	Tipo	Observação
-id_cliente	SERIAL	PK
-nome_cliente	VARCHAR	
-sobrenome_cliente	VARCHAR	
-nascimento_cliente	DATE	
-email_cliente	VARCHAR	Único
-senha_cliente	VARCHAR	
-4.2 — Tabela tb_alimentos
-Coluna	Tipo	Observação
-id_alimento	SERIAL	PK
-nome_alimento	VARCHAR	
-tipo_alimento	VARCHAR	
-preco_alimento	NUMERIC(10,2)	
-descricao_alimento	VARCHAR	
-porcao_alimento	INTEGER	
-nota_alimento	NUMERIC	NOT NULL (default definido)
-4.3 — Tabela tb_pedido
-Coluna	Tipo	Observação
-id_pedido	SERIAL	PK
-id_cliente	INT	FK → cliente
-data_pedido	TIMESTAMP	NOW() default
-total_pedido	NUMERIC	
-4.4 — Tabela tb_itempedido
-Coluna	Tipo	Observação
-id_item	SERIAL	PK
-id_pedido	INT	FK → pedido
-id_alimento	INT	FK → alimento
-quantidade	INT	
-subtotal	NUMERIC	
-🖥 5. Fluxo de Funcionamento do Sistema
+O DAO insere o novo registro em:
 
-A seguir, o fluxo completo do FeiFood.
+tb_cliente
 
-▶ 5.1 Login
 
-Usuário informa email e senha
+Com tratamento de exceções e mensagens via JOptionPane.
 
-Controller → chama DAO
+🔐 3.2 Login de usuário
 
-Se encontrado → abre TelaPrincipal
+A tela de login permite ao usuário acessar o sistema utilizando:
 
-Se inválido → mensagem de erro
+Email
 
-▶ 5.2 Listagem e Pesquisa de Alimentos
+Senha
 
-Tela carrega todos os alimentos na JTable
+O processo é:
 
-Campo txtPesquisa filtra por nome
+Controller pega os dados dos campos
 
-Resultados atualizados dinamicamente
+Envia para o ClienteDAO
 
-▶ 5.3 Seleção e construção do pedido
+DAO executa:
 
-Usuário seleciona alimentos da tabela
+SELECT * FROM tb_cliente WHERE email_cliente = ? AND senha_cliente = ?
 
-Pressiona btnAdicionar
 
-Itens são adicionados à tabela do pedido
+Se encontrado → abre a TelaPrincipal
 
-Sistema calcula subtotal + total geral
+Se não encontrado → mostra mensagem de erro
 
-▶ 5.4 Salvando o pedido no banco
+Também armazena os dados do usuário logado para uso posterior no pedido.
 
-Controller cria registro na tabela tb_pedido
+🔎 3.3 Buscar por alimento
 
-Obtém automaticamente o ID gerado
+O usuário pode digitar o nome (ou parte do nome) de um alimento.
+A busca é feita no banco através de:
 
-Insere cada item na tabela tb_itempedido
+SELECT * FROM tb_alimentos WHERE nome_alimento ILIKE ?
 
-Exibe mensagem de sucesso
 
-🛠 6. Tecnologias Utilizadas
-Tecnologia	Função
-Java 17	Linguagem principal
-Swing (JFrame Forms)	Interface gráfica
-Apache NetBeans	IDE
-PostgreSQL + pgAdmin4	Banco de dados
-JDBC	Conexão com o banco
-MVC + DAO	Arquitetura do sistema
-GitHub / README.md	Documentação
-📌 7. Próximos Passos e Melhorias Futuras
+O Controller recebe o texto pesquisado, chama o DAO e retorna um ResultSet.
 
-O projeto já é totalmente funcional, mas pode ser expandido:
+📋 3.4 Listar informações de alimentos buscados
 
-🔹 Implementar sistema de avaliações
+Os resultados da busca são exibidos em uma JTable contendo:
 
-Salvar notas dos alimentos e calcular média.
+Nome	Tipo	Preço	Descrição	Porção
 
-🔹 Pagamentos
+O preço é formatado com "R$"
 
-Simulação ou integração com APIs.
+A porção exibe "g"
 
-🔹 Tema visual / CSS para Swing
+Exemplo:
 
-Deixar a interface mais moderna.
+Hambúrguer Clássico | comida | R$22,90 | Pão e carne | 180g
 
-🔹 Responsividade em telas menores
 
-Otimização visual.
+A tabela é atualizada dinamicamente conforme o usuário pesquisa novos alimentos.
 
-🔹 Relatórios PDF de pedidos
+🛒 3.5 Cadastrar pedido
 
-Exportação automática.
+O usuário pode:
 
-🧑‍💻 8. Conclusão
+Selecionar um alimento da tabela
 
-O projeto FeiFood representa um sistema completo, profissional e estruturado, que cobre:
+Adicionar ao pedido atual
 
-modelagem de dados
+Remover itens
 
-interface gráfica
+Confirmar o pedido
 
-comunicação com banco
+Quando o pedido é salvo:
 
-CRUD completo
+✔ Inserção na tabela tb_pedidos
 
-pesquisa dinâmica
+Inclui:
 
-controle de pedidos
+ID do cliente
 
-Além de funcionar como entrega acadêmica, o projeto é uma excelente base para sistemas de vendas, delivery, controle de estoque e muito mais.
+Data do pedido
 
-📎 9. Contato e Contribuição
+Status inicial
 
-Sinta-se livre para clonar, testar, melhorar e enviar PRs.
+Total calculado
 
-Desenvolvedor: Higor Augusto
-Curso: Ciência da Computação – 3º Semestre
+✔ Inserção de cada item na tabela tb_pedido_itens
+
+Inclui:
+
+ID do pedido
+
+ID do alimento
+
+Quantidade
+
+Preço total do item
+
+Toda a lógica é abstraída no ControlePedido e nos respectivos DAOs.
+
+🗄 4. Banco de Dados
+
+O FeiFood utiliza PostgreSQL com as seguintes tabelas:
+
+tb_cliente
+
+tb_alimentos
+
+tb_pedidos
+
+tb_pedido_itens
+
+As tabelas possuem:
+
+chaves primárias incrementais (SERIAL)
+
+relacionamentos via FK
+
+campos validados para evitar inconsistências
+
+suporte a “nota média do alimento”
+
+🧪 5. Testes Realizados
+
+Durante o desenvolvimento, foram feitos testes como:
+
+Teste de conexão com banco
+
+Teste de inserção de usuário
+
+Teste de login válido e inválido
+
+Teste de pesquisa com filtros parciais
+
+Teste de formatação de tabelas
+
+Teste de criação de pedidos com múltiplos itens
+
+Teste de remoção e atualização do pedido
+
+Todos os testes foram aprovados, garantindo o funcionamento essencial do sistema.
+
+🧭 6. Conclusão
+
+O FeiFood representa um projeto completo dentro do contexto acadêmico, demonstrando domínio de:
+
+Java Swing e interfaces gráficas
+
+Banco de dados relacional
+
+Lógica de programação estruturada e orientada a objetos
+
+Arquitetura MVC
+
+Boas práticas com DAOs
+
+Manipulação de JTable
+
+Estrutura de CRUD real com diferentes entidades
+
+O projeto abre caminho para futuras expansões, como:
+
+Telas mais ricas em UX/UI
+
+Sistema de avaliações dos alimentos
+
+Histórico de pedidos do usuário
+
+Integração com API de pagamentos fictícia
+
+Versão mobile ou web
+
+📘 7. Sobre o Desenvolvedor
+
+Projeto desenvolvido por:
+
+Higor Augusto
+Estudante de Ciência da Computação – 3º Semestre
+Focado em desenvolvimento de software, UX/UI e aplicações Java.
