@@ -6,6 +6,7 @@ package view;
 
 import controller.ControleLogin;
 import controller.ControlePesquisa;
+import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JLayeredPane;
 import javax.swing.JScrollPane;
@@ -135,6 +136,14 @@ public class TelaPrincipal extends javax.swing.JFrame {
     public void setTxtPesquisa(JTextField txtPesquisa) {
         this.txtPesquisa = txtPesquisa;
     }
+
+    public JButton getBtAddPedido() {
+        return btAddPedido;
+    }
+
+    public void setBtAddPedido(JButton btAddPedido) {
+        this.btAddPedido = btAddPedido;
+    }
     
     public void limparTabela() {
         DefaultTableModel modelo = (DefaultTableModel) tbAlimentos.getModel();
@@ -163,6 +172,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
         tbAlimentos = new javax.swing.JTable();
         lblWelcome = new javax.swing.JLabel();
         lbIcon = new javax.swing.JLabel();
+        btAddPedido = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(255, 51, 51));
@@ -237,9 +247,19 @@ public class TelaPrincipal extends javax.swing.JFrame {
         lbIcon.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/user.png"))); // NOI18N
         lbIcon.setDisabledIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/user.png"))); // NOI18N
 
+        btAddPedido.setFont(new java.awt.Font("Franklin Gothic Medium", 0, 14)); // NOI18N
+        btAddPedido.setForeground(new java.awt.Color(204, 0, 0));
+        btAddPedido.setText("Realizar pedido");
+        btAddPedido.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btAddPedidoActionPerformed(evt);
+            }
+        });
+
         jLayeredPane2.setLayer(jLayeredPane1, javax.swing.JLayeredPane.DEFAULT_LAYER);
         jLayeredPane2.setLayer(lblWelcome, javax.swing.JLayeredPane.DEFAULT_LAYER);
         jLayeredPane2.setLayer(lbIcon, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        jLayeredPane2.setLayer(btAddPedido, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
         javax.swing.GroupLayout jLayeredPane2Layout = new javax.swing.GroupLayout(jLayeredPane2);
         jLayeredPane2.setLayout(jLayeredPane2Layout);
@@ -247,7 +267,9 @@ public class TelaPrincipal extends javax.swing.JFrame {
             jLayeredPane2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jLayeredPane1)
             .addGroup(jLayeredPane2Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(24, 24, 24)
+                .addComponent(btAddPedido)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(lblWelcome, javax.swing.GroupLayout.PREFERRED_SIZE, 233, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(lbIcon, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -256,10 +278,15 @@ public class TelaPrincipal extends javax.swing.JFrame {
         jLayeredPane2Layout.setVerticalGroup(
             jLayeredPane2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jLayeredPane2Layout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addGroup(jLayeredPane2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(lbIcon, javax.swing.GroupLayout.DEFAULT_SIZE, 36, Short.MAX_VALUE)
-                    .addComponent(lblWelcome, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGroup(jLayeredPane2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(jLayeredPane2Layout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addGroup(jLayeredPane2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(lbIcon, javax.swing.GroupLayout.DEFAULT_SIZE, 36, Short.MAX_VALUE)
+                            .addComponent(lblWelcome, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                    .addGroup(jLayeredPane2Layout.createSequentialGroup()
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(btAddPedido, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLayeredPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
@@ -282,6 +309,13 @@ public class TelaPrincipal extends javax.swing.JFrame {
         // TODO add your handling code here:
         c.pesquisa();
     }//GEN-LAST:event_txtPesquisaActionPerformed
+
+    private void btAddPedidoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btAddPedidoActionPerformed
+        // TODO add your handling code here:
+        View.RealizarPedido tela = new View.RealizarPedido(user);
+        tela.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_btAddPedidoActionPerformed
 
     /**
      * @param args the command line arguments
@@ -311,6 +345,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
     private ControlePesquisa c;
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btAddPedido;
     private javax.swing.JLayeredPane jLayeredPane1;
     private javax.swing.JLayeredPane jLayeredPane2;
     private javax.swing.JScrollPane jScrollPane1;

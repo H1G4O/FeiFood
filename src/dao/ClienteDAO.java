@@ -30,16 +30,28 @@ public class ClienteDAO {
         return resultado;
     }
     
-    public void inserir(User user)throws SQLException{
-        String sql = "insert into tb_cliente(nome_cliente, "
-                + "sobrenome_cliente, nascimento_cliente, email_cliente, "
-                + "senha_cliente)values('"+user.getNome()+"', '"
-                +user.getSobrenome()+"', '"
-                +user.getNasc()+"', '"
-                +user.getEmail()+"', '"
-                +user.getSenha()+"')";
+    public void inserir(User user) throws SQLException {
+        String sql = "INSERT INTO tb_cliente(nome_cliente, sobrenome_cliente, nascimento_cliente, email_cliente, senha_cliente) VALUES (?, ?, ?, ?, ?)";
+
         PreparedStatement statement = conn.prepareStatement(sql);
+        statement.setString(1, user.getNome());
+        statement.setString(2, user.getSobrenome());
+        statement.setString(3, user.getNasc());
+        statement.setString(4, user.getEmail());
+        statement.setString(5, user.getSenha());
         statement.execute();
         conn.close();
+    }
+        // Buscar ID do cliente pelo email
+    public int buscarIdPorEmail(String email) throws SQLException {
+        String sql = "SELECT id_cliente FROM tb_cliente WHERE email_cliente = ?";
+        PreparedStatement statement = conn.prepareStatement(sql);
+        statement.setString(1, email);
+        ResultSet resultado = statement.executeQuery();
+
+        if (resultado.next()) {
+            return resultado.getInt("id_cliente");
+        }
+        return -1; // não encontrado
     }
 }
