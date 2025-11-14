@@ -23,7 +23,6 @@ public class ControlePedidoDAO {
             Connection conn = conexao.getConnection();
             PedidoDAO dao = new PedidoDAO(conn);
 
-            // 1️⃣ SALVA O PEDIDO
             int idGerado = dao.inserirPedido(pedido);
 
             if (idGerado == -1) {
@@ -33,7 +32,6 @@ public class ControlePedidoDAO {
 
             pedido.setIdPedido(idGerado);
 
-            // 2️⃣ SALVA ITEMS
             for (ItemPedido item : pedido.getItens()) {
                 dao.inserirItem(idGerado, item);
             }

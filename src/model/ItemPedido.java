@@ -9,7 +9,7 @@ package model;
  * @author Higor
  */
 public class ItemPedido {
-    private int idAlimento;       // fk para tb_alimentos.id_alimento
+    private int idAlimento;   
     private String nomeAlimento;
     private double precoUnitario;
     private int quantidade;

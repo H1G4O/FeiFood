@@ -42,7 +42,6 @@ public class ClienteDAO {
         statement.execute();
         conn.close();
     }
-        // Buscar ID do cliente pelo email
     public int buscarIdPorEmail(String email) throws SQLException {
         String sql = "SELECT id_cliente FROM tb_cliente WHERE email_cliente = ?";
         PreparedStatement statement = conn.prepareStatement(sql);
@@ -52,6 +51,6 @@ public class ClienteDAO {
         if (resultado.next()) {
             return resultado.getInt("id_cliente");
         }
-        return -1; // não encontrado
+        return -1;
     }
 }

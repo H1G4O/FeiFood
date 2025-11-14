@@ -34,7 +34,6 @@ public class ControleRealizarPedido {
         buscarIdCliente();
     }
     
-    // Buscar ID do cliente no banco
     private void buscarIdCliente() {
         Conexao conexao = new Conexao();
         try {
@@ -60,7 +59,6 @@ public class ControleRealizarPedido {
         this.emailCliente = emailCliente;
     }
 
-    // 1️⃣ Adicionar item ao pedido
     public void adicionarItem() {
         int linha = tela.getTbAlimentos().getSelectedRow();
 
@@ -69,12 +67,10 @@ public class ControleRealizarPedido {
             return;
         }
 
-        // PEGAR DADOS DA TABELA
         int idAlimento = (int) tela.getTbAlimentos().getValueAt(linha, 0);
         String nome = tela.getTbAlimentos().getValueAt(linha, 1).toString();
         double preco = (double) tela.getTbAlimentos().getValueAt(linha, 3);
 
-        // QUANTIDADE DO COMBOBOX
         int quantidade = Integer.parseInt(tela.getCbxQtd().getSelectedItem().toString());
 
         ItemPedido item = new ItemPedido(idAlimento, nome, preco, quantidade);
@@ -84,8 +80,6 @@ public class ControleRealizarPedido {
         JOptionPane.showMessageDialog(tela, "Item adicionado ao carrinho!");
     }
 
-    // 2️⃣ Remover item do pedido
-    // 2️⃣ Remover item do pedido
     public void removerItem() {
         int linha = tela.getTbCarrinho().getSelectedRow();
 
@@ -94,7 +88,6 @@ public class ControleRealizarPedido {
             return;
         }
 
-        // Verifica se a célula não é null antes de chamar toString()
         Object nomeObj = tela.getTbCarrinho().getValueAt(linha, 0);
 
         if (nomeObj == null) {
@@ -104,7 +97,6 @@ public class ControleRealizarPedido {
 
         String nomeAlimento = nomeObj.toString();
 
-        // Buscar o ID do alimento pelo nome
         for (ItemPedido item : pedido.getItens()) {
             if (item.getNomeAlimento().equals(nomeAlimento)) {
                 pedido.removerItem(item.getIdAlimento());
@@ -116,7 +108,6 @@ public class ControleRealizarPedido {
         JOptionPane.showMessageDialog(tela, "Item removido do carrinho!");
     }
     
-    // 3️⃣ Atualizar tabela do carrinho
     public void atualizarCarrinho() {
         DefaultTableModel modelo = (DefaultTableModel) tela.getTbCarrinho().getModel();
         modelo.setRowCount(0);
@@ -130,11 +121,9 @@ public class ControleRealizarPedido {
             });
         }
         
-        // Atualizar label do total
         tela.getLblTotal().setText(String.format("Total: R$ %.2f", pedido.getValorPedido()));
     }
     
-    // 4️⃣ Finalizar e salvar pedido
     public void finalizarPedido() {
         if (pedido.getItens().isEmpty()) {
             JOptionPane.showMessageDialog(tela, "Adicione itens ao carrinho antes de finalizar!");
@@ -151,7 +140,6 @@ public class ControleRealizarPedido {
             int idPedido = controle.salvarPedido(pedido);
             
             if (idPedido != -1) {
-                // Limpar carrinho após salvar
                 pedido = new Pedido();
                 pedido.setIdCliente(idCliente);
                 atualizarCarrinho();
@@ -159,7 +147,6 @@ public class ControleRealizarPedido {
         }
     }
     
-    // 5️⃣ Carregar alimentos na tabela
     public void carregarAlimentos() {
         Conexao conexao = new Conexao();
         
@@ -189,7 +176,6 @@ public class ControleRealizarPedido {
         }
     }
     
-    // 6️⃣ Pesquisar alimentos
     public void pesquisarAlimentos(String termo) {
         Conexao conexao = new Conexao();
         

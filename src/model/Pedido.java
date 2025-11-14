@@ -16,7 +16,7 @@ public class Pedido {
     private LocalDate dataPedido;
     private LocalTime horaPedido;
     private int idCliente, idPedido;
-    private double valorPedido; // total
+    private double valorPedido; 
     private List<ItemPedido> itens;
 
     public int getIdPedido() {
@@ -57,7 +57,6 @@ public class Pedido {
     public void setItens(List<ItemPedido> itens) { this.itens = itens; recalcValor(); }
 
     public void adicionarItem(ItemPedido item) {
-        // se já existir o mesmo idAlimento, soma a quantidade
         for (ItemPedido ip : itens) {
             if (ip.getIdAlimento() == item.getIdAlimento()) {
                 ip.setQuantidade(ip.getQuantidade() + item.getQuantidade());

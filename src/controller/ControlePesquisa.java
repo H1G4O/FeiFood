@@ -30,7 +30,7 @@ public class ControlePesquisa {
         try {
             Connection conn = conexao.getConnection();
             AlimentoDAO dao = new AlimentoDAO(conn);
-            ResultSet res = dao.pesquisar(""); // vazio → retorna tudo
+            ResultSet res = dao.pesquisar(""); 
 
             tela2.limparTabela();
 
@@ -52,7 +52,6 @@ public class ControlePesquisa {
         }
     }
 
-    // 2️⃣ FAZ PESQUISA APENAS POR NOME
     public void pesquisa(){
         String nomePesquisa = tela2.getTxtPesquisa().getText();
         Conexao conexao = new Conexao();
