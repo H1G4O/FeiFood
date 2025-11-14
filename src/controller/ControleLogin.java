@@ -28,7 +28,7 @@ public class ControleLogin {
     
     public void loginCliente(){
         
-        User user = new User(null, null, tela1.getTxtEmail().getText(), 
+        User user = new User(null, null, null, tela1.getTxtEmail().getText(), 
                 tela1.getTxtSenha().getText());
         
         Conexao conexao = new Conexao();
@@ -42,10 +42,11 @@ public class ControleLogin {
                                                 JOptionPane.INFORMATION_MESSAGE);
                 String nome = res.getString("nome_cliente");
                 String sobrenome = res.getString("sobrenome_cliente");
+                String nasc = res.getString("nascimento_cliente");
                 String email = res.getString("email_cliente");
                 String senha = res.getString("senha_cliente");
                 
-                TelaPrincipal logado = new TelaPrincipal(new User(nome, sobrenome, email, senha));
+                TelaPrincipal logado = new TelaPrincipal(new User(nome, sobrenome, nasc, email, senha));
                 
                 logado.setVisible(true);
                 tela1.setVisible(false);

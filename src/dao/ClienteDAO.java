@@ -30,4 +30,16 @@ public class ClienteDAO {
         return resultado;
     }
     
+    public void inserir(User user)throws SQLException{
+        String sql = "insert into tb_cliente(nome_cliente, "
+                + "sobrenome_cliente, nascimento_cliente, email_cliente, "
+                + "senha_cliente)values('"+user.getNome()+"', '"
+                +user.getSobrenome()+"', '"
+                +user.getNasc()+"', '"
+                +user.getEmail()+"', '"
+                +user.getSenha()+"')";
+        PreparedStatement statement = conn.prepareStatement(sql);
+        statement.execute();
+        conn.close();
+    }
 }

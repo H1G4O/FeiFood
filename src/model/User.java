@@ -9,15 +9,16 @@ package model;
  * @author Higor
  */
 public class User {
-    private String nome, sobrenome, email, senha;
+    private String nome, sobrenome, nasc, email, senha;
     
     public User(){
         
     }
 
-    public User(String nome,String sobrenome, String email, String senha) {
+    public User(String nome, String sobrenome, String nasc, String email, String senha) {
         this.nome = nome;
         this.sobrenome = sobrenome;
+        this.nasc = nasc;
         this.email = email;
         this.senha = senha;
     }
@@ -38,6 +39,14 @@ public class User {
         this.sobrenome = sobrenome;
     }
 
+    public String getNasc() {
+        return nasc;
+    }
+
+    public void setNasc(String nasc) {
+        this.nasc = nasc;
+    }
+
     public String getEmail() {
         return email;
     }
@@ -53,5 +62,7 @@ public class User {
     public void setSenha(String senha) {
         this.senha = senha;
     }
+
+    
     
 }

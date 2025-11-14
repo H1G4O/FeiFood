@@ -3,10 +3,10 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/Higor/Documents/NetBeansProjects/FeiFood/src/model/User.java</file>
-            <file>file:/C:/Users/Higor/Documents/NetBeansProjects/FeiFood/src/controller/ControleLogin.java</file>
             <file>file:/C:/Users/Higor/Documents/NetBeansProjects/FeiFood/src/view/TelaInicial.java</file>
-            <file>file:/C:/Users/Higor/Documents/NetBeansProjects/FeiFood/src/view/TelaPrincipal.java</file>
+            <file>file:/C:/Users/Higor/Documents/NetBeansProjects/FeiFood/src/view/Cadastro.java</file>
+            <file>file:/C:/Users/Higor/Documents/NetBeansProjects/FeiFood/src/controller/ControleCadastro.java</file>
+            <file>file:/C:/Users/Higor/Documents/NetBeansProjects/FeiFood/src/dao/ClienteDAO.java</file>
         </group>
     </open-files>
 </project-private>

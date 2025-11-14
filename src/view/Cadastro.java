@@ -4,6 +4,7 @@
  */
 package view;
 
+import controller.ControleCadastro;
 import javax.swing.JButton;
 import javax.swing.JFormattedTextField;
 import javax.swing.JLabel;
@@ -24,6 +25,7 @@ public class Cadastro extends javax.swing.JFrame {
      */
     public Cadastro() {
         initComponents();
+        c = new ControleCadastro(this);
     }
 
     public JButton getBtCadastroCadastro() {
@@ -278,12 +280,18 @@ public class Cadastro extends javax.swing.JFrame {
         lbNome.setForeground(new java.awt.Color(255, 255, 255));
         lbNome.setText("Nome");
 
+        txtNome.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtNomeActionPerformed(evt);
+            }
+        });
+
         lbSobrenome.setFont(new java.awt.Font("Franklin Gothic Book", 0, 14)); // NOI18N
         lbSobrenome.setForeground(new java.awt.Color(255, 255, 255));
         lbSobrenome.setText("Sobrenome");
 
-        txtNascimento.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.DateFormatter(java.text.DateFormat.getDateInstance(java.text.DateFormat.SHORT))));
-        txtNascimento.setText("DD/MM/AAAA");
+        txtNascimento.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.DateFormatter(new java.text.SimpleDateFormat("y-MM-dd"))));
+        txtNascimento.setText("AAAA-MM-DD");
 
         lbNascimento.setFont(new java.awt.Font("Franklin Gothic Book", 0, 14)); // NOI18N
         lbNascimento.setForeground(new java.awt.Color(255, 255, 255));
@@ -328,7 +336,7 @@ public class Cadastro extends javax.swing.JFrame {
                                         .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jLayeredPane2Layout.createSequentialGroup()
                                             .addComponent(lbSenhaCadastro, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
                                             .addGap(41, 41, 41)
-                                            .addComponent(txtSenhaCadastro))
+                                            .addComponent(txtSenhaCadastro, javax.swing.GroupLayout.DEFAULT_SIZE, 166, Short.MAX_VALUE))
                                         .addGroup(jLayeredPane2Layout.createSequentialGroup()
                                             .addGroup(jLayeredPane2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                                 .addComponent(lbEmailCadastro, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -421,6 +429,7 @@ public class Cadastro extends javax.swing.JFrame {
 
     private void btCadastroCadastroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btCadastroCadastroActionPerformed
         // TODO add your handling code here:
+        c.SalvarUser();
     }//GEN-LAST:event_btCadastroCadastroActionPerformed
 
     private void btLoginCadastroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btLoginCadastroActionPerformed
@@ -430,9 +439,16 @@ public class Cadastro extends javax.swing.JFrame {
         this.dispose();
     }//GEN-LAST:event_btLoginCadastroActionPerformed
 
+    private void txtNomeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNomeActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtNomeActionPerformed
+
     /**
      * @param args the command line arguments
      */
+    
+    private ControleCadastro c;
+    
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btCadastroCadastro;
     private javax.swing.JButton btLoginCadastro;

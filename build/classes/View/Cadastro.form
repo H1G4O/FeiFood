@@ -61,7 +61,7 @@
                                           <Group type="102" alignment="0" attributes="0">
                                               <Component id="lbSenhaCadastro" min="-2" pref="50" max="-2" attributes="0"/>
                                               <EmptySpace min="-2" pref="41" max="-2" attributes="0"/>
-                                              <Component id="txtSenhaCadastro" max="32767" attributes="0"/>
+                                              <Component id="txtSenhaCadastro" pref="166" max="32767" attributes="0"/>
                                           </Group>
                                           <Group type="102" attributes="0">
                                               <Group type="103" groupAlignment="0" attributes="0">
@@ -298,6 +298,9 @@
           </Properties>
         </Component>
         <Component class="javax.swing.JTextField" name="txtNome">
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtNomeActionPerformed"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JLabel" name="lbSobrenome">
           <Properties>
@@ -313,9 +316,9 @@
         <Component class="javax.swing.JFormattedTextField" name="txtNascimento">
           <Properties>
             <Property name="formatterFactory" type="javax.swing.JFormattedTextField$AbstractFormatterFactory" editor="org.netbeans.modules.form.editors.AbstractFormatterFactoryEditor">
-              <Format subtype="1" type="1"/>
+              <Format format="y-MM-dd" subtype="-1" type="1"/>
             </Property>
-            <Property name="text" type="java.lang.String" value="DD/MM/AAAA"/>
+            <Property name="text" type="java.lang.String" value="AAAA-MM-DD"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JLabel" name="lbNascimento">
