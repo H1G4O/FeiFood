@@ -55,32 +55,29 @@
                           <Group type="103" groupAlignment="0" attributes="0">
                               <Group type="102" attributes="0">
                                   <EmptySpace min="-2" pref="97" max="-2" attributes="0"/>
-                                  <Group type="103" groupAlignment="0" attributes="0">
-                                      <Component id="lbSenhaCadastro1" alignment="0" min="-2" max="-2" attributes="0"/>
-                                      <Group type="103" alignment="0" groupAlignment="1" max="-2" attributes="0">
-                                          <Group type="102" alignment="0" attributes="0">
-                                              <Component id="lbSenhaCadastro" min="-2" pref="50" max="-2" attributes="0"/>
-                                              <EmptySpace min="-2" pref="41" max="-2" attributes="0"/>
-                                              <Component id="txtSenhaCadastro" pref="166" max="32767" attributes="0"/>
-                                          </Group>
-                                          <Group type="102" attributes="0">
+                                  <Group type="103" groupAlignment="1" max="-2" attributes="0">
+                                      <Group type="102" alignment="0" attributes="0">
+                                          <Component id="lbSenhaCadastro" min="-2" pref="50" max="-2" attributes="0"/>
+                                          <EmptySpace min="-2" pref="41" max="-2" attributes="0"/>
+                                          <Component id="txtSenhaCadastro" pref="166" max="32767" attributes="0"/>
+                                      </Group>
+                                      <Group type="102" attributes="0">
+                                          <Group type="103" groupAlignment="0" attributes="0">
+                                              <Component id="lbEmailCadastro" alignment="0" min="-2" pref="50" max="-2" attributes="0"/>
                                               <Group type="103" groupAlignment="0" attributes="0">
-                                                  <Component id="lbEmailCadastro" alignment="0" min="-2" pref="50" max="-2" attributes="0"/>
-                                                  <Group type="103" groupAlignment="0" attributes="0">
-                                                      <Group type="103" alignment="1" groupAlignment="0" attributes="0">
-                                                          <Component id="lbSobrenome" min="-2" max="-2" attributes="0"/>
-                                                          <Component id="lbNascimento" min="-2" max="-2" attributes="0"/>
-                                                      </Group>
-                                                      <Component id="lbNome" min="-2" pref="50" max="-2" attributes="0"/>
+                                                  <Group type="103" alignment="1" groupAlignment="0" attributes="0">
+                                                      <Component id="lbSobrenome" min="-2" max="-2" attributes="0"/>
+                                                      <Component id="lbNascimento" min="-2" max="-2" attributes="0"/>
                                                   </Group>
+                                                  <Component id="lbNome" min="-2" pref="50" max="-2" attributes="0"/>
                                               </Group>
-                                              <EmptySpace type="separate" max="-2" attributes="0"/>
-                                              <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                                  <Component id="txtEmailCadastro" max="32767" attributes="0"/>
-                                                  <Component id="txtNome" alignment="0" max="32767" attributes="0"/>
-                                                  <Component id="txtNascimento" alignment="1" pref="166" max="32767" attributes="0"/>
-                                                  <Component id="txtSobrenome" max="32767" attributes="0"/>
-                                              </Group>
+                                          </Group>
+                                          <EmptySpace type="separate" max="-2" attributes="0"/>
+                                          <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                              <Component id="txtEmailCadastro" max="32767" attributes="0"/>
+                                              <Component id="txtNome" alignment="0" max="32767" attributes="0"/>
+                                              <Component id="txtNascimento" alignment="1" pref="166" max="32767" attributes="0"/>
+                                              <Component id="txtSobrenome" max="32767" attributes="0"/>
                                           </Group>
                                       </Group>
                                   </Group>
@@ -95,28 +92,22 @@
                       <Group type="102" alignment="1" attributes="0">
                           <EmptySpace pref="169" max="32767" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
-                              <Group type="103" alignment="0" groupAlignment="0" attributes="0">
-                                  <Group type="102" alignment="0" attributes="0">
-                                      <EmptySpace min="19" pref="19" max="-2" attributes="0"/>
-                                      <Component id="btCadastroCadastro" min="-2" pref="137" max="-2" attributes="0"/>
-                                  </Group>
-                                  <Group type="102" alignment="1" attributes="0">
-                                      <Group type="103" groupAlignment="0" attributes="0">
-                                          <Component id="lbTConta" min="-2" pref="152" max="-2" attributes="0"/>
-                                          <Group type="102" alignment="0" attributes="0">
-                                              <EmptySpace min="6" pref="6" max="-2" attributes="0"/>
-                                              <Component id="btLoginCadastro" min="-2" max="-2" attributes="0"/>
-                                          </Group>
-                                      </Group>
-                                      <EmptySpace min="-2" pref="4" max="-2" attributes="0"/>
-                                  </Group>
-                              </Group>
                               <Group type="102" alignment="0" attributes="0">
-                                  <EmptySpace min="-2" pref="19" max="-2" attributes="0"/>
-                                  <Component id="txtSenhaCadastro1" min="-2" pref="166" max="-2" attributes="0"/>
+                                  <EmptySpace min="19" pref="19" max="-2" attributes="0"/>
+                                  <Component id="btCadastroCadastro" min="-2" pref="137" max="-2" attributes="0"/>
+                              </Group>
+                              <Group type="102" alignment="1" attributes="0">
+                                  <Group type="103" groupAlignment="0" attributes="0">
+                                      <Component id="lbTConta" min="-2" pref="152" max="-2" attributes="0"/>
+                                      <Group type="102" alignment="0" attributes="0">
+                                          <EmptySpace min="6" pref="6" max="-2" attributes="0"/>
+                                          <Component id="btLoginCadastro" min="-2" max="-2" attributes="0"/>
+                                      </Group>
+                                  </Group>
+                                  <EmptySpace min="-2" pref="4" max="-2" attributes="0"/>
                               </Group>
                           </Group>
-                          <EmptySpace min="-2" pref="102" max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="131" max="-2" attributes="0"/>
                       </Group>
                   </Group>
               </Group>
@@ -153,12 +144,7 @@
                       <Component id="txtSenhaCadastro" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="lbSenhaCadastro" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
-                  <EmptySpace max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="txtSenhaCadastro1" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="lbSenhaCadastro1" alignment="3" min="-2" max="-2" attributes="0"/>
-                  </Group>
-                  <EmptySpace min="-2" pref="7" max="-2" attributes="0"/>
+                  <EmptySpace min="-2" pref="32" max="-2" attributes="0"/>
                   <Component id="btCadastroCadastro" min="-2" max="-2" attributes="0"/>
                   <EmptySpace min="-2" pref="45" max="-2" attributes="0"/>
                   <Component id="lbTConta" min="-2" max="-2" attributes="0"/>
@@ -316,9 +302,8 @@
         <Component class="javax.swing.JFormattedTextField" name="txtNascimento">
           <Properties>
             <Property name="formatterFactory" type="javax.swing.JFormattedTextField$AbstractFormatterFactory" editor="org.netbeans.modules.form.editors.AbstractFormatterFactoryEditor">
-              <Format format="y-MM-dd" subtype="-1" type="1"/>
+              <Format subtype="1" type="1"/>
             </Property>
-            <Property name="text" type="java.lang.String" value="AAAA-MM-DD"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JLabel" name="lbNascimento">
@@ -333,19 +318,6 @@
           </Properties>
         </Component>
         <Component class="javax.swing.JTextField" name="txtSobrenome">
-        </Component>
-        <Component class="javax.swing.JLabel" name="lbSenhaCadastro1">
-          <Properties>
-            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-              <Font name="Franklin Gothic Book" size="14" style="0"/>
-            </Property>
-            <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-              <Color blue="ff" green="ff" red="ff" type="rgb"/>
-            </Property>
-            <Property name="text" type="java.lang.String" value="Repita a senha"/>
-          </Properties>
-        </Component>
-        <Component class="javax.swing.JPasswordField" name="txtSenhaCadastro1">
         </Component>
       </SubComponents>
     </Container>

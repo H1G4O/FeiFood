@@ -39,6 +39,7 @@ public class ControleCadastro {
             JOptionPane.showMessageDialog(tela3, "Usuário cadastrado!","Aviso!",
                                                 JOptionPane.INFORMATION_MESSAGE);
         }catch(SQLException ex){
+            ex.printStackTrace();
             JOptionPane.showMessageDialog(tela3, "Usuário não cadastrado!", "Erro", 
                                                 JOptionPane.ERROR_MESSAGE);
         }

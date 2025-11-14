@@ -7,6 +7,8 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.sql.ResultSet;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import model.User;
 
 /**
@@ -36,7 +38,11 @@ public class ClienteDAO {
         PreparedStatement statement = conn.prepareStatement(sql);
         statement.setString(1, user.getNome());
         statement.setString(2, user.getSobrenome());
-        statement.setString(3, user.getNasc());
+        
+    DateTimeFormatter formatoBr = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+    LocalDate dataConvertida = LocalDate.parse(user.getNasc(), formatoBr);
+
+    statement.setDate(3, java.sql.Date.valueOf(dataConvertida));
         statement.setString(4, user.getEmail());
         statement.setString(5, user.getSenha());
         statement.execute();

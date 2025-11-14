@@ -160,7 +160,6 @@ public class ControleRealizarPedido {
             
             while (res.next()) {
                 modelo.addRow(new Object[]{
-                    res.getInt("id_alimento"),
                     res.getString("nome_alimento"),
                     res.getString("tipo_alimento"),
                     res.getDouble("preco_alimento"),
