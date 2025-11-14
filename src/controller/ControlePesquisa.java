@@ -24,20 +24,71 @@ public class ControlePesquisa {
         this.tela2=tela2;
     }
     
+     public void carregarTodos() {
+        Conexao conexao = new Conexao();
+
+        try {
+            Connection conn = conexao.getConnection();
+            AlimentoDAO dao = new AlimentoDAO(conn);
+            ResultSet res = dao.pesquisar(""); // vazio → retorna tudo
+
+            tela2.limparTabela();
+
+            while (res.next()) {
+                tela2.adicionarNaTabela(new Object[]{
+                    res.getString("nome_alimento"),
+                    res.getString("tipo_alimento"),
+                    res.getDouble("preco_alimento"),
+                    res.getString("descricao_alimento"),
+                    res.getInt("porcao_alimento"),
+                    res.getDouble("nota_alimento")
+                });
+            }
+
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(tela2,
+                "Erro ao carregar alimentos.",
+                "Erro", JOptionPane.ERROR_MESSAGE);
+        }
+    }
+
+    // 2️⃣ FAZ PESQUISA APENAS POR NOME
     public void pesquisa(){
         String nomePesquisa = tela2.getTxtPesquisa().getText();
         Conexao conexao = new Conexao();
-        
-        try{
+
+        try {
             Connection conn = conexao.getConnection();
             AlimentoDAO dao = new AlimentoDAO(conn);
-            ResultSet res = dao.consultar(nomePesquisa);
-            
-        }catch{
-            
+            ResultSet res = dao.pesquisar(nomePesquisa);
+
+            tela2.limparTabela();
+
+            boolean achou = false;
+
+            while (res.next()) {
+                achou = true;
+
+                tela2.adicionarNaTabela(new Object[]{
+                    res.getString("nome_alimento"),
+                    res.getString("tipo_alimento"),
+                    res.getDouble("preco_alimento"),
+                    res.getString("descricao_alimento"),
+                    res.getInt("porcao_alimento"),
+                    res.getDouble("nota_alimento")
+                });
+            }
+
+            if (!achou) {
+                JOptionPane.showMessageDialog(tela2,
+                    "Nenhum alimento encontrado para: " + nomePesquisa,
+                    "Aviso", JOptionPane.INFORMATION_MESSAGE);
+            }
+
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(tela2,
+                "Erro ao pesquisar alimentos.",
+                "Erro", JOptionPane.ERROR_MESSAGE);
         }
-        
-        
     }
-    
 }

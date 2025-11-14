@@ -5,11 +5,13 @@
 package view;
 
 import controller.ControleLogin;
+import controller.ControlePesquisa;
 import javax.swing.JLabel;
 import javax.swing.JLayeredPane;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.JTextField;
+import javax.swing.table.DefaultTableModel;
 import model.User;
 
 /**
@@ -29,11 +31,19 @@ public class TelaPrincipal extends javax.swing.JFrame {
     public TelaPrincipal(User user) {
         this.user = user;
         initComponents();
-
-        // Exemplo: mostrar nome na tela
         lblWelcome.setText("Olá, " + user.getNome());
+        c = new ControlePesquisa(this);
+        c.carregarTodos();
     }
 
+    public JTable getTbAlimentos() {
+        return tbAlimentos;
+    }
+
+    public void setTbAlimentos(JTable tbAlimentos) {
+        this.tbAlimentos = tbAlimentos;
+    }
+    
     public TelaPrincipal() {
         initComponents();
     }
@@ -87,11 +97,11 @@ public class TelaPrincipal extends javax.swing.JFrame {
     }
 
     public JTable getjTable1() {
-        return jTable1;
+        return tbAlimentos;
     }
 
     public void setjTable1(JTable jTable1) {
-        this.jTable1 = jTable1;
+        this.tbAlimentos = jTable1;
     }
 
     public JLabel getLbIcon() {
@@ -126,8 +136,15 @@ public class TelaPrincipal extends javax.swing.JFrame {
         this.txtPesquisa = txtPesquisa;
     }
     
+    public void limparTabela() {
+        DefaultTableModel modelo = (DefaultTableModel) tbAlimentos.getModel();
+     modelo.setRowCount(0);
+    }
     
-    
+    public void adicionarNaTabela(Object[] dados) {
+        DefaultTableModel modelo = (DefaultTableModel) tbAlimentos.getModel();
+        modelo.addRow(dados);
+    }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -143,7 +160,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
         txtPesquisa = new javax.swing.JTextField();
         lblSearchIcon = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        tbAlimentos = new javax.swing.JTable();
         lblWelcome = new javax.swing.JLabel();
         lbIcon = new javax.swing.JLabel();
 
@@ -168,18 +185,18 @@ public class TelaPrincipal extends javax.swing.JFrame {
         lblSearchIcon.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         lblSearchIcon.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/search-24.png"))); // NOI18N
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        tbAlimentos.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null}
             },
             new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
+                "Nome", "Tipo", "Preço", "Descrição", "Porção", "Nota"
             }
         ));
-        jScrollPane1.setViewportView(jTable1);
+        jScrollPane1.setViewportView(tbAlimentos);
 
         jLayeredPane1.setLayer(txtPesquisa, javax.swing.JLayeredPane.DEFAULT_LAYER);
         jLayeredPane1.setLayer(lblSearchIcon, javax.swing.JLayeredPane.DEFAULT_LAYER);
@@ -263,6 +280,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
 
     private void txtPesquisaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtPesquisaActionPerformed
         // TODO add your handling code here:
+        c.pesquisa();
     }//GEN-LAST:event_txtPesquisaActionPerformed
 
     /**
@@ -289,15 +307,17 @@ public class TelaPrincipal extends javax.swing.JFrame {
 //        /* Create and display the form */
 //        java.awt.EventQueue.invokeLater(() -> new TelaPrincipal().setVisible(true));
 //    }
+    
+    private ControlePesquisa c;
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLayeredPane jLayeredPane1;
     private javax.swing.JLayeredPane jLayeredPane2;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
     private javax.swing.JLabel lbIcon;
     private javax.swing.JLabel lblSearchIcon;
     private javax.swing.JLabel lblWelcome;
+    private javax.swing.JTable tbAlimentos;
     private javax.swing.JTextField txtPesquisa;
     // End of variables declaration//GEN-END:variables
 }
