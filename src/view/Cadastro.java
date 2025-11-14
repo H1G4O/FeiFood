@@ -2,10 +2,15 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
-package View;
-import java.awt.*;
-import java.awt.geom.Path2D;
-import javax.swing.*;
+package view;
+
+import javax.swing.JButton;
+import javax.swing.JFormattedTextField;
+import javax.swing.JLabel;
+import javax.swing.JLayeredPane;
+import javax.swing.JPasswordField;
+import javax.swing.JTextField;
+
 /**
  *
  * @author Higor
@@ -19,6 +24,158 @@ public class Cadastro extends javax.swing.JFrame {
      */
     public Cadastro() {
         initComponents();
+    }
+
+    public JButton getBtCadastroCadastro() {
+        return btCadastroCadastro;
+    }
+
+    public void setBtCadastroCadastro(JButton btCadastroCadastro) {
+        this.btCadastroCadastro = btCadastroCadastro;
+    }
+
+    public JButton getBtLoginCadastro() {
+        return btLoginCadastro;
+    }
+
+    public void setBtLoginCadastro(JButton btLoginCadastro) {
+        this.btLoginCadastro = btLoginCadastro;
+    }
+
+    public JLabel getjLabel6() {
+        return jLabel6;
+    }
+
+    public void setjLabel6(JLabel jLabel6) {
+        this.jLabel6 = jLabel6;
+    }
+
+    public JLayeredPane getjLayeredPane1() {
+        return jLayeredPane1;
+    }
+
+    public void setjLayeredPane1(JLayeredPane jLayeredPane1) {
+        this.jLayeredPane1 = jLayeredPane1;
+    }
+
+    public JLayeredPane getjLayeredPane2() {
+        return jLayeredPane2;
+    }
+
+    public void setjLayeredPane2(JLayeredPane jLayeredPane2) {
+        this.jLayeredPane2 = jLayeredPane2;
+    }
+
+    public JLabel getLbCadastreSe() {
+        return lbCadastreSe;
+    }
+
+    public void setLbCadastreSe(JLabel lbCadastreSe) {
+        this.lbCadastreSe = lbCadastreSe;
+    }
+
+    public JLabel getLbEmailCadastro() {
+        return lbEmailCadastro;
+    }
+
+    public void setLbEmailCadastro(JLabel lbEmailCadastro) {
+        this.lbEmailCadastro = lbEmailCadastro;
+    }
+
+    public JLabel getLbNascimento() {
+        return lbNascimento;
+    }
+
+    public void setLbNascimento(JLabel lbNascimento) {
+        this.lbNascimento = lbNascimento;
+    }
+
+    public JLabel getLbNome() {
+        return lbNome;
+    }
+
+    public void setLbNome(JLabel lbNome) {
+        this.lbNome = lbNome;
+    }
+
+    public JLabel getLbSenhaCadastro() {
+        return lbSenhaCadastro;
+    }
+
+    public void setLbSenhaCadastro(JLabel lbSenhaCadastro) {
+        this.lbSenhaCadastro = lbSenhaCadastro;
+    }
+
+    public JLabel getLbSenhaCadastro1() {
+        return lbSenhaCadastro1;
+    }
+
+    public void setLbSenhaCadastro1(JLabel lbSenhaCadastro1) {
+        this.lbSenhaCadastro1 = lbSenhaCadastro1;
+    }
+
+    public JLabel getLbSobrenome() {
+        return lbSobrenome;
+    }
+
+    public void setLbSobrenome(JLabel lbSobrenome) {
+        this.lbSobrenome = lbSobrenome;
+    }
+
+    public JLabel getLbTConta() {
+        return lbTConta;
+    }
+
+    public void setLbTConta(JLabel lbTConta) {
+        this.lbTConta = lbTConta;
+    }
+
+    public JTextField getTxtEmailCadastro() {
+        return txtEmailCadastro;
+    }
+
+    public void setTxtEmailCadastro(JTextField txtEmailCadastro) {
+        this.txtEmailCadastro = txtEmailCadastro;
+    }
+
+    public JFormattedTextField getTxtNascimento() {
+        return txtNascimento;
+    }
+
+    public void setTxtNascimento(JFormattedTextField txtNascimento) {
+        this.txtNascimento = txtNascimento;
+    }
+
+    public JTextField getTxtNome() {
+        return txtNome;
+    }
+
+    public void setTxtNome(JTextField txtNome) {
+        this.txtNome = txtNome;
+    }
+
+    public JPasswordField getTxtSenhaCadastro() {
+        return txtSenhaCadastro;
+    }
+
+    public void setTxtSenhaCadastro(JPasswordField txtSenhaCadastro) {
+        this.txtSenhaCadastro = txtSenhaCadastro;
+    }
+
+    public JPasswordField getTxtSenhaCadastro1() {
+        return txtSenhaCadastro1;
+    }
+
+    public void setTxtSenhaCadastro1(JPasswordField txtSenhaCadastro1) {
+        this.txtSenhaCadastro1 = txtSenhaCadastro1;
+    }
+
+    public JTextField getTxtSobrenome() {
+        return txtSobrenome;
+    }
+
+    public void setTxtSobrenome(JTextField txtSobrenome) {
+        this.txtSobrenome = txtSobrenome;
     }
 
     /**
@@ -86,6 +243,11 @@ public class Cadastro extends javax.swing.JFrame {
         btLoginCadastro.setFont(new java.awt.Font("Franklin Gothic Medium", 0, 14)); // NOI18N
         btLoginCadastro.setForeground(new java.awt.Color(204, 0, 0));
         btLoginCadastro.setText("Fazer Login");
+        btLoginCadastro.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btLoginCadastroActionPerformed(evt);
+            }
+        });
 
         jLayeredPane1.setBackground(new java.awt.Color(255, 255, 255));
         jLayeredPane1.setOpaque(true);
@@ -261,39 +423,13 @@ public class Cadastro extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_btCadastroCadastroActionPerformed
 
-public class RoundedRightPanel extends JPanel {
-    private int arc = 40; // how round the right corners are
+    private void btLoginCadastroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btLoginCadastroActionPerformed
+        // TODO add your handling code here:
+        TelaInicial telaInicial = new TelaInicial();
+        telaInicial.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_btLoginCadastroActionPerformed
 
-    public RoundedRightPanel() {
-        setOpaque(false); // keeps corners transparent
-    }
-
-    @Override
-    protected void paintComponent(Graphics g) {
-        super.paintComponent(g);
-        Graphics2D g2 = (Graphics2D) g.create();
-        g2.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
-
-        int w = getWidth();
-        int h = getHeight();
-
-        // Path with only top-right & bottom-right corners rounded
-        Path2D.Double shape = new Path2D.Double();
-        shape.moveTo(0, 0);              // top-left
-        shape.lineTo(w - arc, 0);
-        shape.quadTo(w, 0, w, arc);      // top-right curve
-        shape.lineTo(w, h - arc);
-        shape.quadTo(w, h, w - arc, h);  // bottom-right curve
-        shape.lineTo(0, h);
-        shape.closePath();
-
-        // Fill the panel background
-        g2.setColor(getBackground());
-        g2.fill(shape);
-
-        g2.dispose();
-    }
-}
     /**
      * @param args the command line arguments
      */

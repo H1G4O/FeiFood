@@ -243,6 +243,9 @@
             </Property>
             <Property name="text" type="java.lang.String" value="Fazer Login"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btLoginCadastroActionPerformed"/>
+          </Events>
         </Component>
         <Container class="javax.swing.JLayeredPane" name="jLayeredPane1">
           <Properties>

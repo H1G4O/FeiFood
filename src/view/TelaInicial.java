@@ -2,15 +2,21 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
-package View;
-import java.awt.*;
-import java.awt.geom.Path2D;
-import javax.swing.*;
+package view;
+
+import controller.ControleLogin;
+import javax.swing.JButton;
+import javax.swing.JLabel;
+import javax.swing.JLayeredPane;
+import javax.swing.JPasswordField;
+import javax.swing.JTextField;
+
 /**
  *
  * @author Higor
  */
 public class TelaInicial extends javax.swing.JFrame {
+    
     
     private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(TelaInicial.class.getName());
 
@@ -19,8 +25,97 @@ public class TelaInicial extends javax.swing.JFrame {
      */
     public TelaInicial() {
         initComponents();
+        c = new ControleLogin(this);
     }
 
+    public JButton getBtCadastro() {
+        return btCadastro;
+    }
+
+    public void setBtCadastro(JButton btCadastro) {
+        this.btCadastro = btCadastro;
+    }
+
+    public JButton getBtLogin() {
+        return btLogin;
+    }
+
+    public void setBtLogin(JButton btLogin) {
+        this.btLogin = btLogin;
+    }
+
+    public JLabel getjLabel6() {
+        return jLabel6;
+    }
+
+    public void setjLabel6(JLabel jLabel6) {
+        this.jLabel6 = jLabel6;
+    }
+
+    public JLayeredPane getjLayeredPane1() {
+        return jLayeredPane1;
+    }
+
+    public void setjLayeredPane1(JLayeredPane jLayeredPane1) {
+        this.jLayeredPane1 = jLayeredPane1;
+    }
+
+    public JLayeredPane getjLayeredPane2() {
+        return jLayeredPane2;
+    }
+
+    public void setjLayeredPane2(JLayeredPane jLayeredPane2) {
+        this.jLayeredPane2 = jLayeredPane2;
+    }
+
+    public JLabel getLbEmail() {
+        return lbEmail;
+    }
+
+    public void setLbEmail(JLabel lbEmail) {
+        this.lbEmail = lbEmail;
+    }
+
+    public JLabel getLbEntre() {
+        return lbEntre;
+    }
+
+    public void setLbEntre(JLabel lbEntre) {
+        this.lbEntre = lbEntre;
+    }
+
+    public JLabel getLbNConta() {
+        return lbNConta;
+    }
+
+    public void setLbNConta(JLabel lbNConta) {
+        this.lbNConta = lbNConta;
+    }
+
+    public JLabel getLbSenha() {
+        return lbSenha;
+    }
+
+    public void setLbSenha(JLabel lbSenha) {
+        this.lbSenha = lbSenha;
+    }
+
+    public JTextField getTxtEmail() {
+        return txtEmail;
+    }
+
+    public void setTxtEmail(JTextField txtEmail) {
+        this.txtEmail = txtEmail;
+    }
+
+    public JPasswordField getTxtSenha() {
+        return txtSenha;
+    }
+
+    public void setTxtSenha(JPasswordField txtSenha) {
+        this.txtSenha = txtSenha;
+    }
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -78,6 +173,11 @@ public class TelaInicial extends javax.swing.JFrame {
         btCadastro.setFont(new java.awt.Font("Franklin Gothic Medium", 0, 14)); // NOI18N
         btCadastro.setForeground(new java.awt.Color(204, 0, 0));
         btCadastro.setText("Cadastre-se");
+        btCadastro.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btCadastroActionPerformed(evt);
+            }
+        });
 
         jLayeredPane1.setBackground(new java.awt.Color(255, 255, 255));
         jLayeredPane1.setOpaque(true);
@@ -185,43 +285,20 @@ public class TelaInicial extends javax.swing.JFrame {
 
     private void btLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btLoginActionPerformed
         // TODO add your handling code here:
+        c.loginCliente();
     }//GEN-LAST:event_btLoginActionPerformed
-public class RoundedRightPanel extends JPanel {
-    private int arc = 40; // how round the right corners are
 
-    public RoundedRightPanel() {
-        setOpaque(false); // keeps corners transparent
-    }
+    private void btCadastroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btCadastroActionPerformed
+        // TODO add your handling code here:
+        Cadastro cadastroScreen = new Cadastro();
+        cadastroScreen.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_btCadastroActionPerformed
 
-    @Override
-    protected void paintComponent(Graphics g) {
-        super.paintComponent(g);
-        Graphics2D g2 = (Graphics2D) g.create();
-        g2.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
-
-        int w = getWidth();
-        int h = getHeight();
-
-        // Path with only top-right & bottom-right corners rounded
-        Path2D.Double shape = new Path2D.Double();
-        shape.moveTo(0, 0);              // top-left
-        shape.lineTo(w - arc, 0);
-        shape.quadTo(w, 0, w, arc);      // top-right curve
-        shape.lineTo(w, h - arc);
-        shape.quadTo(w, h, w - arc, h);  // bottom-right curve
-        shape.lineTo(0, h);
-        shape.closePath();
-
-        // Fill the panel background
-        g2.setColor(getBackground());
-        g2.fill(shape);
-
-        g2.dispose();
-    }
-}
     /**
      * @param args the command line arguments
      */
+    private ControleLogin c;
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btCadastro;
